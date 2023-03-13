@@ -14,10 +14,13 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [(builtins.trace rust-overlay.overlay rust-overlay.overlays.default) ];
+        overlays = [rust-overlay.overlays.default];
       };
     in {
       devShell = pkgs.mkShell {
+        shellHook = ''
+          export CC=$(which clang)
+        '';
         packages = with pkgs; [
           alejandra
           rustfmt
