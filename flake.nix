@@ -3,7 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    tezos = "github:marigold-dev/tezos-nix";
+    tezos.url = "github:marigold-dev/tezos-nix";
   };
 
   outputs = {
@@ -29,7 +29,7 @@
           rust-analyzer
           wabt
           clang
-          tezos-nix.packages.${system}.octez-smart-rollup-wasm-debugger
+          tezos.packages.${system}.octez-smart-rollup-wasm-debugger
 
           (rust-bin.stable."1.66.0".default.override {
             targets = ["wasm32-unknown-unknown"];
